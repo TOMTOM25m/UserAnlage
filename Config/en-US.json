@@ -1,0 +1,20 @@
+{
+    "WindowTitle": "AD User Creation",
+    "GroupBoxKalercherlSearch": "Kalercherl Search",
+    "LabelSearchByName": "Search by Name:",
+    "ButtonSearch": "Search",
+    "LabelSearchByMuwid": "Search by MUWID:",
+    "GroupBoxUserData": "User Data",
+    "LabelMuwid": "MUWID:",
+    "LabelFirstName": "First Name:",
+    "LabelLastName": "Last Name:",
+    "LabelLoginNameType": "Login Name Type:",
+    "ComboBoxItemMuwid": "ID (MUWID)",
+    "ComboBoxItemDisplayName": "User (DisplayName)",
+    "LabelPassword": "Password:",
+    "LabelCopyPermissions": "Copy Permissions from (MUWID):",
+    "ButtonCreateUser": "Create User",
+    "ButtonCancel": "Cancel",
+    "MsgUserNotFound": "User not found in Kalercherl.",
+    "SearchResultTitle": "Search Result"
+}

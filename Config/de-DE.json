@@ -1,0 +1,20 @@
+{
+    "WindowTitle": "AD Benutzeranlage",
+    "GroupBoxKalercherlSearch": "Kalercherl-Suche",
+    "LabelSearchByName": "Suche nach Name:",
+    "ButtonSearch": "Suchen",
+    "LabelSearchByMuwid": "Suche nach MUWID:",
+    "GroupBoxUserData": "Benutzerdaten",
+    "LabelMuwid": "MUWID:",
+    "LabelFirstName": "Vorname:",
+    "LabelLastName": "Nachname:",
+    "LabelLoginNameType": "Anmeldename-Typ:",
+    "ComboBoxItemMuwid": "ID (MUWID)",
+    "ComboBoxItemDisplayName": "Benutzer (Anzeigename)",
+    "LabelPassword": "Passwort:",
+    "LabelCopyPermissions": "Berechtigungen kopieren von (MUWID):",
+    "ButtonCreateUser": "Benutzer anlegen",
+    "ButtonCancel": "Abbrechen",
+    "MsgUserNotFound": "Benutzer im Kalercherl nicht gefunden.",
+    "SearchResultTitle": "Suchergebnis"
+}

@@ -1,0 +1,18 @@
+{
+    "ScriptVersion": "v7.0.0",
+    "RulebookVersion": "v9.0.9",
+    "Language": "de-DE",
+    "Environment": "DEV",
+    "WhatIf": false,
+    "Mail": {
+        "Enabled": true,
+        "To": "Win-Admin@meduniwien.ac.at",
+        "From": "$env:COMPUTERNAME@meduniwien.ac.at",
+        "SmtpServer": "smtpi.meduniwien.ac.at",
+        "Port": 25
+    },
+    "Paths": {
+        "HomeBasePath": "\\\\filesrv\\home$",
+        "ProfileBasePath": "\\\\filesrv\\profiles$"
+    }
+}
