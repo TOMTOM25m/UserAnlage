@@ -1,11 +1,12 @@
-#region Version Information (MANDATORY - Regelwerk v9.6.0)
-$ScriptVersion = "v7.1.0"  # Updated for v9.6.0 compliance
-$RegelwerkVersion = "v9.6.0"
-$BuildDate = "2025-09-27"
+#region Version Information (MANDATORY - Regelwerk v9.6.2)
+$ScriptVersion = "v7.2.0"  # Updated for v9.6.2 compliance
+$RegelwerkVersion = "v9.6.2"
+$BuildDate = "2025-09-28"
 $Author = "Flecki (Tom) Garnreiter"
 
 <#
 .VERSION HISTORY
+v7.2.0 - 2025-09-28 - Updated to Regelwerk v9.6.2 compliance, PowerShell 5.1/7.x compatibility, dynamic sender addresses
 v7.1.0 - 2025-09-27 - Updated to Regelwerk v9.6.0 compliance, added cross-script communication
 v7.0.0 - Previous - MedUni Wien Kalercherl integration
 v6.x.x - Previous versions - Standard AD user creation functionality
@@ -19,12 +20,24 @@ function Show-ScriptInfo {
         [string]$CurrentVersion = $ScriptVersion
     )
     
-    Write-Host "🚀 $ScriptName v$CurrentVersion" -ForegroundColor Green
-    Write-Host "📅 Build: $BuildDate | Regelwerk: $RegelwerkVersion" -ForegroundColor Cyan
-    Write-Host "👤 Author: $Author" -ForegroundColor Cyan
-    Write-Host "💻 Server: $env:COMPUTERNAME" -ForegroundColor Yellow
-    Write-Host "📂 Repository: Useranlage (AD User Creation)" -ForegroundColor Magenta
-    Write-Host "🏢 Integration: MedUni Wien Kalercherl" -ForegroundColor Blue
+    # PowerShell 5.1/7.x compatibility (Regelwerk v9.6.2 §7)
+    if ($PSVersionTable.PSVersion.Major -ge 7) {
+        # PowerShell 7.x - Unicode-Emojis erlaubt
+        Write-Host "🚀 $ScriptName v$CurrentVersion" -ForegroundColor Green
+        Write-Host "📅 Build: $BuildDate | Regelwerk: $RegelwerkVersion" -ForegroundColor Cyan
+        Write-Host "👤 Author: $Author" -ForegroundColor Cyan
+        Write-Host "💻 Server: $env:COMPUTERNAME" -ForegroundColor Yellow
+        Write-Host "📂 Repository: Useranlage (AD User Creation)" -ForegroundColor Magenta
+        Write-Host "🏢 Integration: MedUni Wien Kalercherl" -ForegroundColor Blue
+    } else {
+        # PowerShell 5.1 - ASCII-Alternativen verwenden
+        Write-Host ">> $ScriptName v$CurrentVersion" -ForegroundColor Green
+        Write-Host "[BUILD] $BuildDate | Regelwerk: $RegelwerkVersion" -ForegroundColor Cyan
+        Write-Host "[AUTHOR] $Author" -ForegroundColor Cyan
+        Write-Host "[SERVER] $env:COMPUTERNAME" -ForegroundColor Yellow
+        Write-Host "[REPO] Useranlage (AD User Creation)" -ForegroundColor Magenta
+        Write-Host "[INTEGRATION] MedUni Wien Kalercherl" -ForegroundColor Blue
+    }
 }
 #endregion
 
@@ -53,7 +66,7 @@ function Send-UseranlageMessage {
     }
     
     $MessageData | ConvertTo-Json | Out-File $MessageFile -Encoding UTF8
-    Write-Verbose "Message sent to $TargetScript: $Message"
+    Write-Verbose "Message sent to ${TargetScript}: $Message"
 }
 
 function Set-UseranlageStatus {
@@ -95,7 +108,9 @@ function Send-ADCreationNotification {
 }
 #endregion
 
-# Export version information for other scripts
-Export-ModuleMember -Variable ScriptVersion, RegelwerkVersion, BuildDate, Author -Function Show-ScriptInfo, Send-UseranlageMessage, Set-UseranlageStatus, Send-ADCreationNotification
+# Export version information for other scripts (only when loaded as module)
+if ($MyInvocation.MyCommand.ModuleName) {
+    Export-ModuleMember -Variable ScriptVersion, RegelwerkVersion, BuildDate, Author -Function Show-ScriptInfo, Send-UseranlageMessage, Set-UseranlageStatus, Send-ADCreationNotification
+}
 
 Write-Verbose "VERSION.ps1 loaded - AD User Creation System v$ScriptVersion (Regelwerk $RegelwerkVersion)"

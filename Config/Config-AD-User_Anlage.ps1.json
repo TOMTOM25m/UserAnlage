@@ -1,18 +1,38 @@
 {
-    "ScriptVersion": "v7.0.0",
-    "RulebookVersion": "v9.0.9",
+    "ScriptVersion": "v7.2.0",
+    "RulebookVersion": "v9.6.2",
     "Language": "de-DE",
     "Environment": "DEV",
     "WhatIf": false,
     "Mail": {
         "Enabled": true,
         "To": "Win-Admin@meduniwien.ac.at",
-        "From": "$env:COMPUTERNAME@meduniwien.ac.at",
+        "From": "ITSC020@meduniwien.ac.at",
+        "DynamicSender": true,
         "SmtpServer": "smtpi.meduniwien.ac.at",
         "Port": 25
     },
     "Paths": {
         "HomeBasePath": "\\\\filesrv\\home$",
         "ProfileBasePath": "\\\\filesrv\\profiles$"
+    },
+    "PowerShell": {
+        "SupportMultiVersion": true,
+        "PreferredVersion": "Current",
+        "EnableUnicodeEmojis": false,
+        "ASCIIMode": true
+    },
+    "Kalercherl": {
+        "BaseUrl": "https://kamel.meduniwien.ac.at/hilfetisch/kalercherl.html",
+        "Enabled": true,
+        "LDAPFallback": true,
+        "LDAPServer": "ldap.meduniwien.ac.at",
+        "LDAPPort": 389
+    },
+    "Compliance": {
+        "RegelwerkVersion": "v9.6.2",
+        "CrossScriptCommunication": true,
+        "MessageDirectory": "LOG\\Messages",
+        "StatusDirectory": "LOG\\Status"
     }
 }
